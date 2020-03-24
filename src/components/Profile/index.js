@@ -35,6 +35,8 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 
+import Avatar from '../Avatar'
+
 const Profile = () => {
     //Primeiro de tudo pegar os dados
     const {
@@ -55,6 +57,7 @@ const Profile = () => {
     `)
     return (
         <div className="Profile-wrapper">
+            <Avatar />
             <h1>{title}</h1>
             <h2>{author}</h2>
             <h3>{position}</h3>
