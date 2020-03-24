@@ -1,13 +1,68 @@
-import React from 'react'
+// import React from 'react'
+// import { StaticQuery, graphql } from 'gatsby'
 
-const Profile = () => (
-    <div className="Profile-wrapper">
-        <h1>Gustavo Pazeto</h1>
-        <h2>Desenvolvedor Front-End Júnior</h2>
-        <p>
-            Estudante do curso de Análise e Desenvolvimento de Sistemas na FATEC-Franca.
+// const Profile = () => (
+//     <StaticQuery
+//         query={graphql`
+//         query MySiteMetadata {
+//             site {
+//                 siteMetadata {
+//                     title
+//                     author
+//                     description
+//                     position
+//                 }
+//             }
+//         }
+//         `}
+//         render={({ site: { siteMetadata: { title, author, position, description } } }) => (
+//             <div className="Profile-wrapper">
+//                 <h1>{title}</h1>
+//                 <h2>{author}</h2>
+//                 <h3>{position}</h3>
+//                 <p>
+//                     {description}
+//                 </p>
+//             </div>
+//         )}
+//     />
+// );
+
+// export default Profile
+
+//useStaticQuery
+
+import React from 'react'
+import { useStaticQuery, graphql } from 'gatsby'
+
+const Profile = () => {
+    //Primeiro de tudo pegar os dados
+    const {
+        site: {
+            siteMetadata: { title, author, position, description },
+        },
+    } = useStaticQuery(graphql`
+    query MySiteMetadata {
+        site {
+            siteMetadata {
+                title
+                author
+                description
+                position
+            }
+        }
+    }
+    `)
+    return (
+        <div className="Profile-wrapper">
+            <h1>{title}</h1>
+            <h2>{author}</h2>
+            <h3>{position}</h3>
+            <p>
+                {description}
             </p>
-    </div>
-);
+        </div>
+    )
+}
 
 export default Profile
