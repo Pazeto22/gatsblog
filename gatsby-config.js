@@ -2,11 +2,12 @@ module.exports = {
   siteMetadata: {
     title: `GatsBlog`,
     // description: `A PWA project that exists to learn some things like gatsby, react, etc...`,
-    description: `Estudante do curso de Análise sse Desenvolvimento de Sistemas na FATEC-Franca.`,
+    description: `Estudante do curso de Análise e Desenvolvimento de Sistemas na FATEC-Franca.`,
     author: `Gustavo Pazeto`,
     position: `Junior Front End Developer`
   },
   plugins: [
+    `gatsby-plugin-styled-components`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
