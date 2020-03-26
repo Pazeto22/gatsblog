@@ -1,71 +1,38 @@
-// import React from 'react'
-// import { StaticQuery, graphql } from 'gatsby'
+import React from "react"
+import { useStaticQuery, graphql } from "gatsby"
 
-// const Profile = () => (
-//     <StaticQuery
-//         query={graphql`
-//         query MySiteMetadata {
-//             site {
-//                 siteMetadata {
-//                     title
-//                     author
-//                     description
-//                     position
-//                 }
-//             }
-//         }
-//         `}
-//         render={({ site: { siteMetadata: { title, author, position, description } } }) => (
-//             <div className="Profile-wrapper">
-//                 <h1>{title}</h1>
-//                 <h2>{author}</h2>
-//                 <h3>{position}</h3>
-//                 <p>
-//                     {description}
-//                 </p>
-//             </div>
-//         )}
-//     />
-// );
-
-// export default Profile
-
-//useStaticQuery
-
-import React from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
-
-import Avatar from '../Avatar'
+import Avatar from "../Avatar"
+import * as S from "./styled"
 
 const Profile = () => {
-    //Primeiro de tudo pegar os dados
-    const {
-        site: {
-            siteMetadata: { title, author, position, description },
-        },
-    } = useStaticQuery(graphql`
+  //Primeiro de tudo pegar os dados
+  const {
+    site: {
+      siteMetadata: { author, position, description },
+    },
+  } = useStaticQuery(graphql`
     query MySiteMetadata {
-        site {
-            siteMetadata {
-                title
-                author
-                description
-                position
-            }
+      site {
+        siteMetadata {
+          author
+          description
+          position
         }
+      }
     }
-    `)
-    return (
-        <div className="Profile-wrapper">
-            <Avatar />
-            <h1>{title}</h1>
-            <h2>{author}</h2>
-            <h3>{position}</h3>
-            <p>
-                {description}
-            </p>
-        </div>
-    )
+  `)
+  return (
+    <S.ProfileWrapper>
+      <S.ProfileLink>
+        <Avatar />
+        <S.ProfileAuthor>
+          {author}
+          <S.ProfilePosition>{position}</S.ProfilePosition>
+        </S.ProfileAuthor>
+      </S.ProfileLink>
+      <S.ProfileDescription>{description}</S.ProfileDescription>
+    </S.ProfileWrapper>
+  )
 }
 
 export default Profile

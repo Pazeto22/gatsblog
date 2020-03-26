@@ -1,27 +1,26 @@
-import React from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
-import Img from 'gatsby-image'
+import React from "react"
+import { useStaticQuery, graphql } from "gatsby"
+import * as S from "./styled"
 
 // FIXED
 
 const Avatar = () => {
-    const { avatarImage } = useStaticQuery(
-        graphql`
-            query {
-                avatarImage: file(relativePath: { eq: "profile-avatar.jpg" }) {
-                    childImageSharp {
-                        fixed(width: 60, height:60){
-                            ...GatsbyImageSharpFixed
-                        }
-                    }
-                }
+  const { avatarImage } = useStaticQuery(
+    graphql`
+      query {
+        avatarImage: file(relativePath: { eq: "profile-avatar.jpg" }) {
+          childImageSharp {
+            fixed(width: 60, height: 60) {
+              ...GatsbyImageSharpFixed
             }
-        `
-    )
+          }
+        }
+      }
+    `
+  )
 
-    return <Img fixed={avatarImage.childImageSharp.fixed} className="Shazam" style={{ borderRadius: "50%" }} />
+  return <S.AvatarWrapper fixed={avatarImage.childImageSharp.fixed} />
 }
-
 
 // FLUID
 
