@@ -9,7 +9,7 @@ const IndexPage = () => (
     <SEO title="Home" />
     <PostItem
       slug="/about/"
-      background="darkred"
+      background="#AF002D"
       category="AEHO"
       date="27 de Março de 2020"
       title="Shazam hoje, Shazam sempre"
